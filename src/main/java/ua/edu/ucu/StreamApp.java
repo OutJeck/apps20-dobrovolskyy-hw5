@@ -24,4 +24,5 @@ public class StreamApp {
         intStream.forEach(x -> str.append(x));
         return str.toString();
     }
+
 }
