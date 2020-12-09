@@ -10,7 +10,8 @@ public class FlatMapIterator implements Iterator<Integer> {
     private final Iterator<Integer> iterator;
     private StreamIterator newIterator;
 
-    public FlatMapIterator(Iterator<Integer> iterator, IntToIntStreamFunction func) {
+    public FlatMapIterator(Iterator<Integer> iterator,
+                           IntToIntStreamFunction func) {
         this.iterator = iterator;
         this.func = func;
         this.newIterator = new StreamIterator();
@@ -20,9 +21,9 @@ public class FlatMapIterator implements Iterator<Integer> {
     public boolean hasNext() {
         if (newIterator.hasNext()) {
             return true;
-        }
-        if (iterator.hasNext()) {
-            AsIntStream tempStream = (AsIntStream) func.applyAsIntStream(iterator.next());
+        } else if (iterator.hasNext()) {
+            AsIntStream tempStream = (AsIntStream) func.
+                    applyAsIntStream(iterator.next());
             newIterator = new StreamIterator(tempStream.toArray());
             return true;
         }

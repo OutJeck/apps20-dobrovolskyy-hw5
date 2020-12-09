@@ -22,7 +22,7 @@ public class StreamIterator implements Iterator<Integer> {
 
     @Override
     public Integer next() {
-        Integer nextElem = this.elems.get(this.index);
+        int nextElem = this.elems.get(this.index);
         this.index++;
         return nextElem;
     }
