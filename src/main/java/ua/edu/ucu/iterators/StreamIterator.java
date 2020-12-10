@@ -5,24 +5,21 @@ import java.util.Iterator;
 import java.util.List;
 
 public class StreamIterator implements Iterator<Integer> {
-    private final List<Integer> elems;
+    private final int[] elems;
     private int index = 0;
 
     public StreamIterator(int... values) {
-        this.elems = new ArrayList<>();
-        for (int value: values) {
-            this.elems.add(value);
-        }
+        this.elems = values;
     }
 
     @Override
     public boolean hasNext() {
-        return this.elems.size() > this.index;
+        return this.elems.length > this.index;
     }
 
     @Override
     public Integer next() {
-        int nextElem = this.elems.get(this.index);
+        int nextElem = this.elems[this.index];
         this.index++;
         return nextElem;
     }
